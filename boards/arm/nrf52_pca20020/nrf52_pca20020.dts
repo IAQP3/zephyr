@@ -34,6 +34,21 @@
 	status = "ok";
 
 	sx1509b: sx1509b@3e {
+		compatible = "semtech,sx1509b";
+		reg = <0x3e>;
+		label = "GPIO_P0";
+	};
+
+	hts221: hts221@0x5f {
+		compatible = "st,hts221";
+		reg = <0x5f>;
+		label = "HTS221";
+	};
+
+	ccs811: ccs811@0x5a {
+		compatible = "ams,ccs811";
+		reg = <0x5a>;
+		label = "CCS811";
 	};
 };
 
