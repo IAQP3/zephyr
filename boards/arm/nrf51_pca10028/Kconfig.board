@@ -6,4 +6,5 @@
 
 config BOARD_NRF51_PCA10028
 	bool "nRF51 PCA10028"
+	select HAS_DTS_I2C
 	depends on SOC_NRF51822_QFAC
