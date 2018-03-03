@@ -342,7 +342,7 @@ static const struct i2c_driver_api i2c_nrf5_driver_api = {
 static void i2c_nrf5_config_func_0(struct device *dev);
 
 static const struct i2c_nrf5_config i2c_nrf5_config_0 = {
-	.base = NRF_TWI0,
+	.base = CONFIG_I2C_0_BASE_ADDR,
 	.irq_config_func = i2c_nrf5_config_func_0,
 	.default_cfg = CONFIG_I2C_0_DEFAULT_CFG,
 	.sda_pin = CONFIG_I2C_NRF5_0_GPIO_SDA_PIN,
@@ -360,10 +360,10 @@ DEVICE_AND_API_INIT(i2c_nrf5_0, CONFIG_I2C_0_NAME, i2c_nrf5_init,
 
 static void i2c_nrf5_config_func_0(struct device *dev)
 {
-	IRQ_CONNECT(NRF5_IRQ_SPI0_TWI0_IRQn, CONFIG_I2C_0_IRQ_PRI,
-		    i2c_nrf5_isr, DEVICE_GET(i2c_nrf5_0), 0);
+	IRQ_CONNECT(CONFIG_I2C_0_IRQ, CONFIG_I2C_0_IRQ_PRI, i2c_nrf5_isr,
+		    DEVICE_GET(i2c_nrf5_0), 0);
 
-	irq_enable(NRF5_IRQ_SPI0_TWI0_IRQn);
+	irq_enable(CONFIG_I2C_0_IRQ);
 }
 #endif /* CONFIG_I2C_0 && !CONFIG_SPI_0 */
 
@@ -371,7 +371,7 @@ static void i2c_nrf5_config_func_0(struct device *dev)
 static void i2c_nrf5_config_func_1(struct device *dev);
 
 static const struct i2c_nrf5_config i2c_nrf5_config_1 = {
-	.base = NRF_TWI1,
+	.base = CONFIG_I2C_1_BASE_ADDR,
 	.irq_config_func = i2c_nrf5_config_func_1,
 	.default_cfg = CONFIG_I2C_1_DEFAULT_CFG,
 	.sda_pin = CONFIG_I2C_NRF5_1_GPIO_SDA_PIN,
@@ -389,9 +389,9 @@ DEVICE_AND_API_INIT(i2c_nrf5_1, CONFIG_I2C_1_NAME, i2c_nrf5_init,
 
 static void i2c_nrf5_config_func_1(struct device *dev)
 {
-	IRQ_CONNECT(NRF5_IRQ_SPI1_TWI1_IRQn, CONFIG_I2C_1_IRQ_PRI,
-		    i2c_nrf5_isr, DEVICE_GET(i2c_nrf5_1), 0);
+	IRQ_CONNECT(CONFIG_I2C_1_IRQ, CONFIG_I2C_1_IRQ_PRI, i2c_nrf5_isr,
+		    DEVICE_GET(i2c_nrf5_1), 0);
 
-	irq_enable(NRF5_IRQ_SPI1_TWI1_IRQn);
+	irq_enable(CONFIG_I2C_1_IRQ);
 }
 #endif /* CONFIG_I2C_1 && !CONFIG_SPI_1 */
