@@ -32,6 +32,9 @@
 
 &i2c1 {
 	status = "ok";
+
+	sx1509b: sx1509b@3e {
+	};
 };
 
 &flash0 {
